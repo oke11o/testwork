@@ -1,5 +1,6 @@
 ###> app ###
 /.idea
+/docker/lib/*
 ###< app ###
 
 ###> symfony/framework-bundle ###

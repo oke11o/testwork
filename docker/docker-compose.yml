@@ -1,0 +1,18 @@
+rabbitmq_local:
+ hostname: rabbitmq_delayed
+ container_name: rabbitmq_delayed
+ build: ./build/
+ restart: always
+ volumes:
+  - "./lib/rabbitmq/db:/var/lib/rabbitmq"
+ environment:
+  RABBITMQ_DEFAULT_USER: admin
+  RABBITMQ_DEFAULT_PASS: admin
+  RABBITMQ_DEFAULT_VHOST: /
+  RABBITMQ_ERLANG_COOKIE: Pakieseebiaxjam6
+  TZ: Europe/Moskow
+ ports:
+  - "15674:15672"
+  - "5674:5672"
+
+
