@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="user")
  */
 class User extends BaseUser
@@ -20,8 +20,25 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $triggerSent = false;
+
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function isTriggerSent(): ?bool
+    {
+        return $this->triggerSent;
+    }
+
+    public function setTriggerSent(bool $triggerSent): self
+    {
+        $this->triggerSent = $triggerSent;
+
+        return $this;
     }
 }

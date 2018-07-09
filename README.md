@@ -5,6 +5,7 @@
 ```
 composer install
 bin/console doctrine:database:create
+bin/console doctrine:migrations:migrate
 
 ```
 
@@ -26,4 +27,18 @@ docker-compose -f docker/docker-compose.yml up --build -d
 
 ```
 bin/console rabbitmq:consumer mail_delayed
+```
+
+### Command worker
+
+**cron command**
+
+```
+bin/console app:user:trigger-worker
+```
+
+**rabbit consumer**
+
+```
+bin/console rabbitmq:consumer mail_direct
 ```

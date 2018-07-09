@@ -46,3 +46,8 @@ services:
             $options:
                 from_email: '%mailer_user%'
                 from_name: '%mailer_user%'
+
+    App\Command\UserTriggerWorkerCommand:
+        arguments:
+            $producer: '@old_sound_rabbit_mq.mail_direct_producer'
+            $delay: '%env(USER_REGISTER_TRIGGER_DELAY)%'
