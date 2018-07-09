@@ -21,3 +21,9 @@ You can use our rabbitmq docker container.
 ```
 docker-compose -f docker/docker-compose.yml up --build -d
 ```
+
+**Symfony command**
+
+```
+bin/console rabbitmq:consumer mail_delayed
+```

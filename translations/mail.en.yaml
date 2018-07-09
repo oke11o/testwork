@@ -1,0 +1,5 @@
+user:
+  trigger:
+    subject: "%username%, you need to fill in additional data"
+    content: |
+      %username%, You need to fill in additional data.

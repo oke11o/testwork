@@ -1,0 +1,6 @@
+{% extends 'mail/base.html.twig' %}
+
+{% block content %}
+    {{ 'user.trigger.content'|trans({'%username%': username}, 'mail', locale) }}
+{% endblock %}
+

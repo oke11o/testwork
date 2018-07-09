@@ -1,0 +1,35 @@
+old_sound_rabbit_mq:
+    connections:
+        default:
+            url: '%env(RABBITMQ_URL)%'
+    producers:
+        mail_delayed:
+            connection:       default
+            exchange_options:
+                name:         "%env(APP_NAME)%-mail-%kernel.environment%"
+                type:         x-delayed-message
+                arguments:    {x-delayed-type: [S, direct]}
+        mail_direct:
+            connection:        default
+            exchange_options:
+                name:         "%env(APP_NAME)%-mail_direct-%kernel.environment%"
+                type:         direct
+    consumers:
+        mail_delayed:
+            connection:       default
+            exchange_options: {name: "%env(APP_NAME)%-mail-%kernel.environment%", type: x-delayed-message, arguments: {x-delayed-type: [S, direct]}}
+            queue_options:    {name: "%env(APP_NAME)%-mail-%kernel.environment%"}
+            callback:         App\Consumer\MailConsumer
+            idle_timeout:           3600
+            idle_timeout_exit_code: 0
+            qos_options:
+                prefetch_count: 1
+        mail_direct:
+            connection:       default
+            exchange_options: {name: "%env(APP_NAME)%-mail_direct-%kernel.environment%", type: direct}
+            queue_options:    {name: "%env(APP_NAME)%-mail_direct-%kernel.environment%"}
+            callback:         App\Consumer\MailConsumer
+            idle_timeout:           3600
+            idle_timeout_exit_code: 0
+            qos_options:
+                prefetch_count: 1
