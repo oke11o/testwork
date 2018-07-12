@@ -1,6 +1,7 @@
 ###> app ###
 /.idea
 /docker/lib/*
+/tmp.txt
 ###< app ###
 
 ###> symfony/framework-bundle ###
@@ -25,3 +26,7 @@ yarn-error.log
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+###< phpunit/phpunit ###
